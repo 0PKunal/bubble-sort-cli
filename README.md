@@ -17,7 +17,6 @@
 	- [Example usage](#example-usage)
 	- [Visualization (Python)](#visualization-python)
 	- [Project structure](#project-structure)
-	- [VS Code tasks (C)](#vs-code-tasks-c)
 	- [Performance \& complexity](#performance--complexity)
 	- [Troubleshooting](#troubleshooting)
 	- [Contributing](#contributing)
@@ -134,19 +133,6 @@ test_data_mix.txt             # Sample data (mixed separators)
 LICENSE                       # MIT license
 README.md                     # This file
 ```
-
-## VS Code tasks (C)
-
-This workspace includes tasks to build and run the active C file:
-
-- Build: “Build C Program” → compiles the open C file to an `.exe` next to it
-- Run: “Run C Program” → launches the compiled `.exe`
-
-Workflow:
-
-1) Open `bubble_sort_cli.c`
-2) Run the build task → `bubble_sort_cli.exe`
-3) Run the program with an input file, e.g. `./bubble_sort_cli.exe .\test_data_100_1.txt`
 
 ## Performance & complexity
 
