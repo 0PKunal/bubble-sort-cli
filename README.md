@@ -1,0 +1,198 @@
+# Bubble Sort CLI (Python, C) ✨
+
+[![Python Version](https://img.shields.io/badge/python-3.x%2B-blue.svg)](https://www.python.org/downloads/)
+[![C](https://img.shields.io/badge/C-Programming-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![GCC](https://img.shields.io/badge/GCC-Compiler-brightgreen.svg)](https://gcc.gnu.org/install/binaries.html)
+[![VS Code](https://img.shields.io/badge/VS%20Code-Editor-blue.svg)](https://code.visualstudio.com/download)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## Table of Contents
+
+- [Bubble Sort CLI (Python, C) ✨](#bubble-sort-cli-python-c-)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [What’s here](#whats-here)
+	- [Quick start (Windows, PowerShell)](#quick-start-windows-powershell)
+	- [Input format](#input-format)
+	- [Example usage](#example-usage)
+	- [Visualization (Python)](#visualization-python)
+	- [Project structure](#project-structure)
+	- [VS Code tasks (C)](#vs-code-tasks-c)
+	- [Performance \& complexity](#performance--complexity)
+	- [Troubleshooting](#troubleshooting)
+	- [Contributing](#contributing)
+	- [License](#license)
+	- [Acknowledgments](#acknowledgments)
+
+## Overview
+
+Simple, educational Bubble Sort tools you can run from the command line. Read numbers from a file, sort them, and get timing + metadata. Includes a Python visualizer for a quick animated view of the algorithm.
+
+## What’s here
+
+- `bubble_sort_cli.py` — Python CLI that sorts numbers from a file and prints results with timing and metadata
+- `bubble_sort_cli.c` — C CLI equivalent (fast, single-file build)
+- `bubble_sort_visual_cli.py` — Python animation of Bubble Sort using Matplotlib (for demos)
+- `test_data_*.txt` — Ready-made input files (50 and 100 elements, mixed ordering)
+- `LICENSE` — MIT License
+
+## Quick start (Windows, PowerShell)
+
+- Python (sorting):
+	- Prereq: Python 3.8+ installed
+	- Run: `python .\bubble_sort_cli.py .\test_data_50_1.txt`
+
+- Python (visualization):
+	- Prereq: `pip install matplotlib`
+	- Run: `python .\bubble_sort_visual_cli.py .\test_data_50_1.txt`
+
+- C (CLI):
+	- Build with VS Code task: open `bubble_sort_cli.c`, run task “Build C Program” (produces `bubble_sort_cli.exe`)
+	- Or build manually with GCC/MinGW: `gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe`
+	- Run: `./bubble_sort_cli.exe .\test_data_50_1.txt`
+
+## Input format
+
+- The input file contains numbers separated by commas and/or whitespace (spaces, tabs, newlines).
+- Numbers can be integers or floating point.
+- The C version parses into doubles and prints compact values using `%g` (so `1` stays `1`, `1.50` becomes `1.5`).
+
+Example (`test_data_mix.txt`):
+
+```
+3, 2, 10 5\n7, 1  4
+```
+
+## Example usage
+
+Python CLI:
+
+```powershell
+python .\bubble_sort_cli.py .\test_data_50_2.txt
+```
+
+C CLI:
+
+```powershell
+gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe
+./bubble_sort_cli.exe .\test_data_50_2.txt
+```
+
+Both versions print the same metadata (field names identical):
+
+- Original data: [ ... ]
+- Sorted data: [ ... ]
+- Sorting took X.XXXXXX seconds
+- Sorting algorithm used: Bubble Sort
+- Number of elements sorted: N
+- Data source: <file>
+- Data type: int or float
+- Data format: Comma and space-separated values
+- Data order before sorting: Unsorted
+- Data order after sorting: Sorted
+- Data size: N elements
+
+Notes:
+
+- In C, the “Data type” is inferred from the first value (integral within 1e-9 → `int`, otherwise `float`) to mirror the Python display intent.
+- Timing uses `clock()` in C and `time.time()` in Python. Absolute values differ across platforms; relative comparisons are still interesting.
+
+## Visualization (Python)
+
+Want to see Bubble Sort in action? The visualizer animates comparisons and the growing sorted tail.
+
+Requirements:
+
+- Python 3.8+
+- Matplotlib: `pip install matplotlib`
+
+Run:
+
+```powershell
+python .\bubble_sort_visual_cli.py .\test_data_50_1.txt
+```
+
+Legend (colors):
+
+- Green: Unsorted portion
+- White: Currently compared elements
+- Cyan: Already sorted portion
+
+Tip: The animation throttles updates on large inputs so it remains smooth even with 100+ bars.
+
+## Project structure
+
+```
+bubble_sort_cli.c             # C CLI implementation
+bubble_sort_cli.py            # Python CLI implementation
+bubble_sort_visual_cli.py     # Python visualization with Matplotlib
+test_data_50_1.txt            # Sample data
+test_data_50_2.txt            # Sample data
+test_data_100_1.txt           # Sample data
+test_data_100_2.txt           # Sample data
+test_data_mix.txt             # Sample data (mixed separators)
+LICENSE                       # MIT license
+README.md                     # This file
+```
+
+## VS Code tasks (C)
+
+This workspace includes tasks to build and run the active C file:
+
+- Build: “Build C Program” → compiles the open C file to an `.exe` next to it
+- Run: “Run C Program” → launches the compiled `.exe`
+
+Workflow:
+
+1) Open `bubble_sort_cli.c`
+2) Run the build task → `bubble_sort_cli.exe`
+3) Run the program with an input file, e.g. `./bubble_sort_cli.exe .\test_data_100_1.txt`
+
+## Performance & complexity
+
+Bubble Sort is O(n²). It’s intentionally simple and great for teaching, but slow on large arrays. Use the provided test files (50–100 elements) for quick demos.
+
+## Troubleshooting
+
+- “python: command not found” → Ensure Python is installed and on PATH. Try `py -V` on Windows, or launch via the Python launcher: `py .\bubble_sort_cli.py <file>`.
+- “gcc: command not found” → Install MinGW-w64 or a GCC toolchain and ensure `gcc` is on PATH. Alternatively, build using VS Code’s C/C++ extension with the provided task.
+- Matplotlib install issues → Upgrade pip: `python -m pip install --upgrade pip` then `pip install matplotlib`.
+
+## Contributing
+Contributions are welcome and appreciated! Here are some ways you can contribute:
+
+ **Suggest Enhancements**
+- Propose new features or improvements.
+- Optimize performance or add additional functionality.
+
+ **Submit Pull Requests**
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-feature`.
+3. Make your changes with clear, commented code.
+4. Test thoroughly with different inputs.
+5. Submit a pull request with a detailed description of your changes.
+
+ **Ideas for Contribution**
+- Add more robust input validation and error handling.
+- Implement unit tests for the Python script.
+- Create a graphical user interface (GUI) for Bubble Sort (e.g., Tkinter/PyQt) or enhance the visualizer.
+- Add support for additional languages or platforms.
+
+Please ensure any code contributions maintain the existing style and include appropriate documentation.
+
+## License
+This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgments
+- **GCC Compiler**: For compiling the C program.
+- **Python Software Foundation**: For providing the Python programming language.
+- **Visual Studio Code**: For being an excellent code editor.
+- **Shields.io**: For the beautiful badges used in this README.
+
+---
+> **Note:** This README.md file was generated with the assistance of AI. While every effort has been made to ensure accuracy and clarity, there may still be minor errors or inconsistencies. Users are encouraged to review the content carefully and make any necessary adjustments.
+
+<div align="center">
+  <p>Made with ❤️ by <a href="https://github.com/0PKunal">0PKunal</a></p>
+  <p>If this project helped you, please give it a ⭐️</p>
+</div>
