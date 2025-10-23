@@ -1,4 +1,4 @@
-# Bubble Sort CLI (Python, C) ✨
+# Bubble Sort CLI (Python, C) 
 
 [![Python Version](https://img.shields.io/badge/python-3.x%2B-blue.svg)](https://www.python.org/downloads/)
 [![C](https://img.shields.io/badge/C-Programming-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
@@ -8,7 +8,7 @@
 
 ## Table of Contents
 
-- [Bubble Sort CLI (Python, C) ✨](#bubble-sort-cli-python-c-)
+- [Bubble Sort CLI (Python, C)](#bubble-sort-cli-python-c)
 	- [Table of Contents](#table-of-contents)
 	- [Overview](#overview)
 	- [What’s here](#whats-here)
@@ -46,9 +46,8 @@ Simple, educational Bubble Sort tools you can run from the command line. Read nu
 	- Run: `python .\bubble_sort_visual_cli.py .\test_data_50_1.txt`
 
 - C (CLI):
-	- Build with VS Code task: open `bubble_sort_cli.c`, run task “Build C Program” (produces `bubble_sort_cli.exe`)
-	- Or build manually with GCC/MinGW: `gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe`
-	- Run: `./bubble_sort_cli.exe .\test_data_50_1.txt`
+	- You can build manually with GCC/MinGW: `gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe`
+	- Then run: `./bubble_sort_cli.exe .\test_data_50_1.txt`
 
 ## Input format
 
@@ -59,7 +58,8 @@ Simple, educational Bubble Sort tools you can run from the command line. Read nu
 Example (`test_data_mix.txt`):
 
 ```
-3, 2, 10 5\n7, 1  4
+3, 2, 10 5
+7, 1  4
 ```
 
 ## Example usage
@@ -72,9 +72,11 @@ python .\bubble_sort_cli.py .\test_data_50_2.txt
 
 C CLI:
 
-```powershell
-gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe
-./bubble_sort_cli.exe .\test_data_50_2.txt
+```pwsh
+gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe #for building 
+```
+```pwsh
+./bubble_sort_cli.exe .\test_data_50_2.txt #for runing
 ```
 
 Both versions print the same metadata (field names identical):
@@ -108,8 +110,17 @@ Requirements:
 Run:
 
 ```powershell
-python .\bubble_sort_visual_cli.py .\test_data_50_1.txt
+python .\bubble_sort_visual_cli.py .\test_data_100_1.txt
 ```
+
+Example Output:
+<p align="center">
+  <img src="Example_Figure.png" alt="Bubble Sort Visualization" width="500">
+</p>
+
+<p align="center">
+  <em>Visualization of 100 elements sorting</em>
+</p>
 
 Legend (colors):
 
@@ -117,20 +128,26 @@ Legend (colors):
 - White: Currently compared elements
 - Cyan: Already sorted portion
 
-Tip: The animation throttles updates on large inputs so it remains smooth even with 100+ bars.
 
 ## Project structure
 
 ```
 bubble_sort_cli.c             # C CLI implementation
+bubble_sort_cli.exe			  # The EXE file
+
 bubble_sort_cli.py            # Python CLI implementation
 bubble_sort_visual_cli.py     # Python visualization with Matplotlib
-test_data_50_1.txt            # Sample data
-test_data_50_2.txt            # Sample data
-test_data_100_1.txt           # Sample data
-test_data_100_2.txt           # Sample data
-test_data_mix.txt             # Sample data (mixed separators)
+
+test_data_50_1.txt            # Sample data (50 integers)
+test_data_50_2.txt            # Sample data (50 float-points)
+test_data_100_1.txt           # Sample data (100 integers)
+test_data_100_2.txt           # Sample data (100 float-points)
+test_data_mix.txt             # Sample data (mixed int + float)
+
+Example_Figure.png			  # Visualization output
+
 LICENSE                       # MIT license
+
 README.md                     # This file
 ```
 
@@ -141,15 +158,19 @@ Bubble Sort is O(n²). It’s intentionally simple and great for teaching, but s
 ## Troubleshooting
 
 - “python: command not found” → Ensure Python is installed and on PATH. Try `py -V` on Windows, or launch via the Python launcher: `py .\bubble_sort_cli.py <file>`.
-- “gcc: command not found” → Install MinGW-w64 or a GCC toolchain and ensure `gcc` is on PATH. Alternatively, build using VS Code’s C/C++ extension with the provided task.
+- “gcc: command not found” → Install MinGW-w64 or a GCC toolchain and ensure `gcc` is on PATH.
 - Matplotlib install issues → Upgrade pip: `python -m pip install --upgrade pip` then `pip install matplotlib`.
 
 ## Contributing
-Contributions are welcome and appreciated! Here are some ways you can contribute:
+Contributions are welcome and appreciated! **Here are some ways you can contribute:**
 
- **Suggest Enhancements**
+ **Ideas for Contribution**
 - Propose new features or improvements.
 - Optimize performance or add additional functionality.
+- Add more robust input validation and error handling.
+- Implement unit tests for the Python script.
+- Create a graphical user interface (GUI) for Bubble Sort (e.g., Tkinter/PyQt) or enhance the visualizer.
+- Add support for additional languages.
 
  **Submit Pull Requests**
 1. Fork the repository.
@@ -158,13 +179,7 @@ Contributions are welcome and appreciated! Here are some ways you can contribute
 4. Test thoroughly with different inputs.
 5. Submit a pull request with a detailed description of your changes.
 
- **Ideas for Contribution**
-- Add more robust input validation and error handling.
-- Implement unit tests for the Python script.
-- Create a graphical user interface (GUI) for Bubble Sort (e.g., Tkinter/PyQt) or enhance the visualizer.
-- Add support for additional languages or platforms.
-
-Please ensure any code contributions maintain the existing style and include appropriate documentation.
+*Please ensure any code contributions maintain the existing style and include appropriate documentation.*
 
 ## License
 This project is open source and available under the [MIT License](LICENSE).

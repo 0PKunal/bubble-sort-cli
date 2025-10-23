@@ -50,8 +50,8 @@ ax.set_facecolor('black')
 
 bar_rects = ax.bar(range(len(data)), data, align="edge", color='green', edgecolor='black')
 ax.set_title("Bubble Sort Visualization", color='white')
-ax.set_xlabel("Index", color='white')
-ax.set_ylabel("Value", color='white')
+ax.set_xlabel(r'Index$\longrightarrow$', color='white')
+ax.set_ylabel(r'Value$\longrightarrow$', color='white')
 ax.tick_params(colors='white')
 ax.set_ylim(0, max(data) * 1.1)
 
