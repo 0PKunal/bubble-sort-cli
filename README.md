@@ -12,10 +12,11 @@
 	- [Table of Contents](#table-of-contents)
 	- [Overview](#overview)
 	- [What’s here](#whats-here)
-	- [Quick start (Windows, PowerShell)](#quick-start-windows-powershell)
+	- [Quick start](#quick-start)
 	- [Input format](#input-format)
 	- [Example usage](#example-usage)
 	- [Visualization (Python)](#visualization-python)
+	- [Interactive input (Python, C)](#interactive-input-python-c)
 	- [Project structure](#project-structure)
 	- [Performance \& complexity](#performance--complexity)
 	- [Troubleshooting](#troubleshooting)
@@ -32,10 +33,12 @@ Simple, educational Bubble Sort tools you can run from the command line. Read nu
 - `bubble_sort_cli.py` — Python CLI that sorts numbers from a file and prints results with timing and metadata
 - `bubble_sort_cli.c` — C CLI equivalent (fast, single-file build)
 - `bubble_sort_visual_cli.py` — Python animation of Bubble Sort using Matplotlib (for demos)
+- `InputBubbleSort.py` — Python interactive Bubble Sort that prompts for count and integer inputs from the console
+- `InputBubbleSort.c` — C interactive Bubble Sort that prompts for count and integer inputs from the console
 - `test_data_*.txt` — Ready-made input files (50 and 100 elements, mixed ordering)
 - `LICENSE` — MIT License
 
-## Quick start (Windows, PowerShell)
+## Quick start
 
 - Python (sorting):
 	- Prereq: Python 3.8+ installed
@@ -47,7 +50,8 @@ Simple, educational Bubble Sort tools you can run from the command line. Read nu
 
 - C (CLI):
 	- You can build manually with GCC/MinGW: `gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe`
-	- Then run: `./bubble_sort_cli.exe .\test_data_50_1.txt`
+	- Then run: `.\bubble_sort_cli.exe .\test_data_50_1.txt`
+
 
 ## Input format
 
@@ -72,11 +76,13 @@ python .\bubble_sort_cli.py .\test_data_50_2.txt
 
 C CLI:
 
-```pwsh
-gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe #for building 
+```powershell
+# build
+gcc .\bubble_sort_cli.c -o .\bubble_sort_cli.exe
 ```
-```pwsh
-./bubble_sort_cli.exe .\test_data_50_2.txt #for runing
+```powershell
+# run
+.\bubble_sort_cli.exe .\test_data_50_2.txt
 ```
 
 Both versions print the same metadata (field names identical):
@@ -115,7 +121,7 @@ python .\bubble_sort_visual_cli.py .\test_data_100_1.txt
 
 Example Output:
 <p align="center">
-  <img src="Example_Figure.png" alt="Bubble Sort Visualization" width="500">
+  <img src="bubble_sort.png" alt="Bubble Sort Visualization" width="500">
 </p>
 
 <p align="center">
@@ -128,20 +134,62 @@ Legend (colors):
 - White: Currently compared elements
 - Cyan: Already sorted portion
 
+## Interactive input (Python, C)
+
+Prefer typing numbers directly instead of using a file? Use the interactive variants. These prompt for the number of elements and then each element, and print the sorted result. Note: the interactive versions expect integers.
+
+- Python (interactive):
+
+```powershell
+python .\InputBubbleSort.py
+```
+
+Example session:
+
+```text
+Enter the number of elements to be sorted: 5
+Enter the elements to be sorted:
+9
+3
+7
+1
+5
+
+The sorted elements are:
+	1    3    5    7    9
+```
+
+- C (interactive):
+
+```pwsh
+gcc .\InputBubbleSort.c -o .\InputBubbleSort.exe
+```
+```pwsh
+.\InputBubbleSort.exe
+```
+
+Notes:
+
+- These interactive programs handle integers only (no floats).
+- For file-based sorting with ints and floats, use the CLI tools described above.
+
 
 ## Project structure
 
 ```
 bubble_sort_cli.c             # C CLI implementation
-bubble_sort_cli.exe			  # The EXE file
+bubble_sort_cli.exe			  # Built artifact after compiling the C CLI
 
 bubble_sort_cli.py            # Python CLI implementation
 bubble_sort_visual_cli.py     # Python visualization with Matplotlib
 
+InputBubbleSort.c             # C interactive (console) version (integers)
+InputBubbleSort.py            # Python interactive (console) version (integers)
+
 test_data_50_1.txt            # Sample data (50 integers)
-test_data_50_2.txt            # Sample data (50 float-points)
+test_data_50_2.txt            # Sample data (50 floating-point)
 test_data_100_1.txt           # Sample data (100 integers)
-test_data_100_2.txt           # Sample data (100 float-points)
+test_data_100_2.txt           # Sample data (100 floating-point)
 test_data_mix.txt             # Sample data (mixed int + float)
 
 Example_Figure.png			  # Visualization output
@@ -160,6 +208,7 @@ Bubble Sort is O(n²). It’s intentionally simple and great for teaching, but s
 - “python: command not found” → Ensure Python is installed and on PATH. Try `py -V` on Windows, or launch via the Python launcher: `py .\bubble_sort_cli.py <file>`.
 - “gcc: command not found” → Install MinGW-w64 or a GCC toolchain and ensure `gcc` is on PATH.
 - Matplotlib install issues → Upgrade pip: `python -m pip install --upgrade pip` then `pip install matplotlib`.
+ - Interactive programs exit unexpectedly → Enter an integer count first, then the same number of integer values (no commas). The interactive versions do not accept floats.
 
 ## Contributing
 Contributions are welcome and appreciated! **Here are some ways you can contribute:**
