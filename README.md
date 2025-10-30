@@ -136,12 +136,14 @@ Legend (colors):
 
 ## Interactive input (Python, C)
 
-Prefer typing numbers directly instead of using a file? Use the interactive variants. These prompt for the number of elements and then each element, and print the sorted result. Note: the interactive versions expect integers.
+Prefer typing numbers directly instead of using a file? Use the interactive variants. These prompt for the number of elements and then each element, and print the sorted result.
+
+***For integers***
 
 - Python (interactive):
 
 ```powershell
-python .\InputBubbleSort.py
+python .\iInputBubbleSort.py
 ```
 
 Example session:
@@ -162,16 +164,43 @@ The sorted elements are:
 - C (interactive):
 
 ```pwsh
-gcc .\InputBubbleSort.c -o .\InputBubbleSort.exe
+gcc .\iInputBubbleSort.c -o .\iInputBubbleSort.exe
 ```
 ```pwsh
-.\InputBubbleSort.exe
+.\iInputBubbleSort.exe
 ```
 
-Notes:
+***For float points***
 
-- These interactive programs handle integers only (no floats).
-- For file-based sorting with ints and floats, use the CLI tools described above.
+- Python (interactive):
+
+```powershell
+python .\fInputBubbleSort.py
+```
+
+Example session:
+
+```text
+Enter the number of elements to be sorted: 5
+Enter the elements to be sorted:
+9.7
+3.2
+7.5
+1.1
+5.6
+
+The sorted elements are:
+1.1  3.2  5.6  7.5  9.7
+```
+
+- C (interactive):
+
+```pwsh
+gcc .\fInputBubbleSort.c -o .\fInputBubbleSort.exe
+```
+```pwsh
+.\fInputBubbleSort.exe
+```
 
 
 ## Project structure
@@ -183,8 +212,11 @@ bubble_sort_cli.exe			  # Built artifact after compiling the C CLI
 bubble_sort_cli.py            # Python CLI implementation
 bubble_sort_visual_cli.py     # Python visualization with Matplotlib
 
-InputBubbleSort.c             # C interactive (console) version (integers)
-InputBubbleSort.py            # Python interactive (console) version (integers)
+iInputBubbleSort.c             # C interactive (console) version (integers)
+fInputBubbleSort.c             # C interactive (console) version (float)
+
+iInputBubbleSort.py            # Python interactive (console) version (integers)
+fInputBubbleSort.py            # Python interactive (console) version (float)
 
 test_data_50_1.txt            # Sample data (50 integers)
 test_data_50_2.txt            # Sample data (50 floating-point)
@@ -240,7 +272,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Shields.io**: For the beautiful badges used in this README.
 
 ---
-> **Note:** This README.md file was generated with the assistance of AI. While every effort has been made to ensure accuracy and clarity, there may still be minor errors or inconsistencies. Users are encouraged to review the content carefully and make any necessary adjustments.
+> **Note:** This README.md file was created with the help of AI. While every effort has been made to ensure accuracy and clarity, there may still be minor errors or inconsistencies. Users are encouraged to review the content carefully and make any necessary adjustments.
 
 <div align="center">
   <p>Made with ❤️ by <a href="https://github.com/0PKunal">0PKunal</a></p>
