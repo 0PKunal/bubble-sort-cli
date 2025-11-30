@@ -121,7 +121,7 @@ python .\bubble_sort_visual_cli.py .\test_data_100_1.txt
 
 Example Output:
 <p align="center">
-  <img src="bubble_sort.png" alt="Bubble Sort Visualization" width="500">
+  <img src="bubble_sort.png" alt="Bubble Sort Visualization" width="666">
 </p>
 
 <p align="center">
